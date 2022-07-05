@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>
+
+Simple Calculator with PyScript
+
+</title>
+
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+<py-env>
+    - pandas
+</py-env>
+
+</head>
+
+<style>
+    input[type=number], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type=submit] {
+      width: 100%;
+      background-color: #4c4faf;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #000000;
+    }
+
+    p {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    </style>
+
+<body>
+
+    <form onsubmit="return false">
+        <h1>CSV Manupulation Course</h1><br>
+
+        <label for="name">Type the Index Number</label><br>
+        <input type="number" id="indexnum" name="number"><br>
+
+        <label for="name">Type the Number you want to add</label><br>
+        <input type="number" id="num1" name="number"><br>
+
+        <input pys-onClick="sub" type="submit" id="btn-form" value="Add & Update">
+    </form>
+
+    <p>Main Excel Data:</p>
+    <p id="csv"></p><br>
+    <p id="resultout"></p><br><br>
+
+    <py-script>
+
+        import pandas as pd
+        from pyodide.http import open_url
+        url_content = open_url("./data.csv")
+        df = pd.read_csv(url_content)
+        csv = Element('csv')
+        csv.write(df)
+
+    </py-script>
+
+    <py-script>
+
+        def sub(*args,**kwargs):
+            num_in = float(Element('num1').value)
+            index_in = float(Element('indexnum').value)
+            df.loc[index_in, "Score"] = df.loc[index_in, "Score"] + num_in
+            result_place = Element('resultout')
+            result_place.write(df)
+
+
+    </py-script>
+
+
+
+
+
+</body>
+</html>
