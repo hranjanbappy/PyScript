@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>
+
+Simple Calculator with PyScript
+
+</title>
+
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+</head>
+
+<style>
+    input[type=number], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type=submit] {
+      width: 100%;
+      background-color: #4c4faf;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #000000;
+    }
+
+    p {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    </style>
+
+<body>
+
+    <form onsubmit="return false">
+        <h1>Simple Calculator for two inputs</h1><br>
+        <label for="name">Select your operator:</label><br>
+
+        <select name="operator" id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select><br>
+
+        <label for="name">Type 1st Number</label><br>
+        <input type="number" id="num1" name="number"><br>
+
+        <label for="name">Type 2nd Number</label><br>
+        <input type="number" id="num2" name="number"><br>
+
+        <input pys-onClick="sub" type="submit" id="btn-form" value="Calculate">
+
+
+    </form>
+
+    <p>Output:</p>
+    <p id = 'output'></p>
+    <py-script>
+
+        def sub(*args,**kwargs):
+            num_1 = Element('num1').value
+            num_2 = Element('num2').value
+            op = Element('operator').value
+            result = eval(f'{num_1} {op} {num_2}')
+            result_place = Element('output')
+            result_place.write(result)
+            
+    </py-script>
+
+</body>
+</html>
