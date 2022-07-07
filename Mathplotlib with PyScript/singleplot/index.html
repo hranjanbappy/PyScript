@@ -1,0 +1,46 @@
+<html>
+
+<head>
+
+<title>
+
+Matplotlib with PyScript
+
+</title>
+
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+<!---pyodide-->
+
+<py-env>
+    - matplotlib
+    - numpy
+</py-env>
+
+</head>
+
+<body>
+
+    <strong>Matplotlib Output</strong>
+    <div id="plot"></dive>
+
+    <py-script output="plot">
+
+      import matplotlib.pyplot as plt
+      import numpy as np
+
+      xpoints = np.array([0, 6])
+      ypoints = np.array([0, 250])
+
+      plt.plot(xpoints, ypoints)
+      plt
+
+
+
+
+    </py-script>
+
+</body>
+
+</html>
