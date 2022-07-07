@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>
+Matplotlib with PyScript
+</title>
+
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+<!---pyodide-->
+
+<py-env>
+    - matplotlib
+    - numpy
+</py-env>
+
+</head>
+
+<body>
+
+    <strong>Matplotlib Simple Line</strong>
+    <p id="plot1"></p><br>
+
+    <py-script><br>
+
+      import matplotlib.pyplot as plt
+      import numpy as np
+
+      xpoints = np.array([0, 6])
+      ypoints = np.array([0, 250])
+      fig = plt.figure()
+      plt.plot(xpoints, ypoints)
+      plot = Element('plot1')
+      plot.write(fig)
+    </py-script><br>
+
+    <strong>Draw a line in a diagram from position (1, 3) to (2, 8) then to (6, 1) and finally to position (8, 10):</strong><br>
+
+    <p id="plot2"></p><br>
+
+    <py-script>
+      import matplotlib.pyplot as plt
+      import numpy as np
+      ypoints = np.array([3, 8, 1, 20])
+      fig = plt.figure()
+      plt.plot(ypoints, 'o:r')
+      plot = Element('plot2')
+      plot.write(fig)
+
+    </py-script>
+
+    <strong>A simple scatter plot:</strong><br>
+
+    <p id="plot3"></p><br>
+
+    <py-script>
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+    y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+    fig = plt.figure()
+    plt.scatter(x, y)
+    plt.show()
+    plot = Element('plot3')
+    plot.write(fig)
+
+    </py-script>
+
+
+
+
+</body>
+
+</html>
